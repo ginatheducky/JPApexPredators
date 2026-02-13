@@ -11,17 +11,11 @@ struct ContentView: View {
     let predators = Predators()
     
     @State var searchText = ""
+    @State var alphabetical = false
     
     var filteredDinos: [ApexPredator] {
-        // if there is a search term, only show the list of those dinos
-        if searchText.isEmpty {
-            return predators.apexPredators
-        } else {
-            // use function filter
-            return predators.apexPredators.filter {
-                predator in predator.name.localizedCaseInsensitiveContains(searchText)
-            }
-        }
+        predators.sort(by: alphabetical)
+        return predators.search(for: searchText)
     }
     
     var body: some View {
@@ -62,6 +56,21 @@ struct ContentView: View {
             .searchable(text: $searchText)
             .autocorrectionDisabled(true)
             .animation(.default, value: searchText) // whenever search text changes this animation will animate the stuff
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        withAnimation {
+                            alphabetical.toggle()
+                        }
+                    } label: {
+                        if alphabetical {
+                            Image(systemName: "textformat")
+                        } else {
+                            Image(systemName: "film")
+                        }
+                    }
+                }
+            }
         }
         .preferredColorScheme(.dark)
     }
