@@ -25,9 +25,7 @@ struct ContentView: View {
             // use your new dinos list to display the navigation stack
             List(filteredDinos) { predator in
                 NavigationLink {
-                    Image(predator.image)
-                        .resizable()
-                        .scaledToFit()
+                    PredatorDetail(predator: predator)
                 } label: {
                     HStack {
                         // Dinosaur Image
