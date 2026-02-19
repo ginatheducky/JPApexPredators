@@ -25,7 +25,7 @@ struct ApexPredator: Decodable, Identifiable {
     }
     
     // another model for the movie_scenes array
-    struct MovieScene: Decodable {
+    struct MovieScene: Decodable, Identifiable {
         let id: Int
         let movie: String
         let sceneDescription: String
