@@ -8,6 +8,7 @@
 // scope of this file is one single apex predator
 
 import SwiftUI
+import MapKit
 
 struct ApexPredator: Decodable, Identifiable {
     // we need to define our properties
@@ -22,6 +23,10 @@ struct ApexPredator: Decodable, Identifiable {
     
     var image: String {
         name.lowercased().replacingOccurrences(of: " ", with: "")
+    }
+    
+    var location: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
     // another model for the movie_scenes array
