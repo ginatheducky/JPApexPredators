@@ -8,11 +8,12 @@
 import Foundation
 
 struct FetchService {
-    enum FetchError: Error {
+    // security: nobody outside this fetch service needs the enum or the baseURL
+    private enum FetchError: Error {
         case badResponse // the server doesn't give us the right data
     }
     
-    let baseURL = URL(string: "https://breaking-bad-api-six.vercel.app/api")!
+    private let baseURL = URL(string: "https://breaking-bad-api-six.vercel.app/api")!
     
     //https://breaking-bad-api-six.vercel.app/api/quotes/random?production=Breaking+Bad
     // ? is a query
