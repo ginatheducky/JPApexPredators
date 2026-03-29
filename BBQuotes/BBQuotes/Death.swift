@@ -8,7 +8,7 @@ import Foundation
 
 struct Death: Decodable {
     let character: String
-    //let image: [URL] // not working for some reason
+    let image: URL // not working for some reason
     let details: String
     let lastWords: String
 }
